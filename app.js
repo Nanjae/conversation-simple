@@ -22,9 +22,14 @@ var Conversation = require('watson-developer-cloud/conversation/v1'); // watson 
 
 var app = express();
 
+// 카카오톡 추가사항
+var apiKeyboard = require('./api/keyboard');
+
 // Bootstrap application settings
 app.use(express.static('./public')); // load UI from public folder
 app.use(bodyParser.json());
+// 카카오톡 추가사항 Add APIs
+app.use('/keyboard', apiKeyboard);
 
 // Create the service wrapper
 var conversation = new Conversation({
